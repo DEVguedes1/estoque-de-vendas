@@ -23,8 +23,10 @@ def carregar_estoque():
                 }
     return estoque
                 
-def salvar_estoque():
-    
+def salvar_estoque(estoque):
+    with open(arquivo_do_estoque,'w') as f:
+        for id_produto, dados in estoque.items():
+            f.write(f"{id_produto},{dados['nome']},{dados['quantidade']},{dados['valor_compra']:.2f},{dados['preco_venda']:.2f}\n")
 
 def adicionar_produto():
     return
