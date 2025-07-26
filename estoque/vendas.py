@@ -6,7 +6,7 @@ def registro_de_vendas(estoque,id_prod,qntd):
         return
     
     produto = estoque[id_prod]
-    nome = produto['nome']
+    nome = produto['nome do produto']
     
     if qntd > produto['quantidade']:
         print(f"Erro: Estoque insuficiente para '{nome}'. Disponível: {produto['quantidade']}, Requisitado: {qntd}")
@@ -14,5 +14,5 @@ def registro_de_vendas(estoque,id_prod,qntd):
     
     produto['quantidade']-= qntd
     salvar_estoque(estoque)
-    total = produto['preço do produto']*qntd
-    print(f"Venda registrada: {qntd}x '{nome}' por R$ {produto['preco_venda']:.2f} cada. Total: R$ {total:.2f}")
+    total = produto['preço da venda']*qntd
+    print(f"Venda registrada: {qntd}x '{nome}' por R$ {produto['preço da venda']:.2f} cada. Total: R$ {total:.2f}")

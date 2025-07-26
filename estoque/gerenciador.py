@@ -26,7 +26,7 @@ def carregar_estoque():
 def salvar_estoque(estoque):
     with open(arquivo_do_estoque,'w') as f:
         for id_produto, dados in estoque.items():
-            f.write(f"{id_produto},{dados['nome']},{dados['quantidade']},{dados['valor_compra']:.2f},{dados['preco_venda']:.2f}\n")
+            f.write(f"{id_produto},{dados['nome do produto']},{dados['quantidade']},{dados['valor da compra']:.2f},{dados['preço da venda']:.2f}\n")
 
 def gerar_id(estoque):
     return max(estoque.keys(), default=0)+1
@@ -49,15 +49,15 @@ def listar(estoque):
         return
     print("/n--- Produtos no Estoque ---")
     for id_prod, p in estoque.items():
-        print(f"ID: {id_prod} | Nome: {p['nome']} | Qtde: {p['quantidade']} | Compra: R$ {p['valor_compra']:.2f} | Venda: R$ {p['preco_venda']:.2f}")
+        print(f"ID: {id_prod} | Nome: {p['nome do produto']} | Qtde: {p['quantidade']} | Compra: R$ {p['valor da compra']:.2f} | Venda: R$ {p['preço da venda']:.2f}")
     print("----------------------------")
     
 def buscar(estoque, termo):
-    encontrados = [ (id_prod, p) for id_prod, p in estoque.items() if termo.lower() in p["nome"].lower() ]
+    encontrados = [ (id_prod, p) for id_prod, p in estoque.items() if termo.lower() in p["nome do produto"].lower() ]
     if not encontrados:
         print("nenhum produto encontrado com esse nome.")
     else:
         print("\n--- Resultados da Busca ---")
         for id_prod, p in encontrados:
-            print(f"ID: {id_prod} | Nome: {p['nome']} | Qtde: {p['quantidade']} | Venda: R$ {p['preco_venda']:.2f}")
+            print(f"ID: {id_prod} | Nome: {p['nome do produto']} | Qtde: {p['quantidade']} | Venda: R$ {p['preço da venda']:.2f}")
         print("---------------------------")
