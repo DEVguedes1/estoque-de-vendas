@@ -51,3 +51,13 @@ def listar(estoque):
     for id_prod, p in estoque.items():
         print(f"ID: {id_prod} | Nome: {p['nome']} | Qtde: {p['quantidade']} | Compra: R$ {p['valor_compra']:.2f} | Venda: R$ {p['preco_venda']:.2f}")
     print("----------------------------")
+    
+def buscar(estoque, termo):
+    encontrados = [ (id_prod, p) for id_prod, p in estoque.items() if termo.lower() in p["nome"].lower() ]
+    if not encontrados:
+        print("nenhum produto encontrado com esse nome.")
+    else:
+        print("\n--- Resultados da Busca ---")
+        for id_prod, p in encontrados:
+            print(f"ID: {id_prod} | Nome: {p['nome']} | Qtde: {p['quantidade']} | Venda: R$ {p['preco_venda']:.2f}")
+        print("---------------------------")
