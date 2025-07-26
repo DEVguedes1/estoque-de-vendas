@@ -42,3 +42,12 @@ def adicionar_produto(estoque,nome,quantidade,valor):
     }
     salvar_estoque(estoque)
     print(f"Produto '{nome}' cadastrado com ID {novo_id} e preço de venda R$ {preco_venda:.2f}.")
+    
+def listar(estoque):
+    if not estoque:
+        print("estoque vazio")
+        return
+    print("/n--- Produtos no Estoque ---")
+    for id_prod, p in estoque.items():
+        print(f"ID: {id_prod} | Nome: {p['nome']} | Qtde: {p['quantidade']} | Compra: R$ {p['valor_compra']:.2f} | Venda: R$ {p['preco_venda']:.2f}")
+    print("----------------------------")
