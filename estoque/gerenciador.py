@@ -28,5 +28,17 @@ def salvar_estoque(estoque):
         for id_produto, dados in estoque.items():
             f.write(f"{id_produto},{dados['nome']},{dados['quantidade']},{dados['valor_compra']:.2f},{dados['preco_venda']:.2f}\n")
 
-def adicionar_produto():
-    return
+def gerar_id(estoque):
+    return max(estoque.keys(), default=0)+1
+
+def adicionar_produto(estoque,nome,quantidade,valor):
+    novo_id = gerar_id(estoque)
+    preco_venda = round(valor*1.10, 2)
+    estoque[novo_id]={
+        "nome do produto":nome,
+        "quantidade":quantidade,
+        "valor da compra":valor,
+        "preço da venda":preco_venda
+    }
+    salvar_estoque(estoque)
+    print(f"Produto '{nome}' cadastrado com ID {novo_id} e preço de venda R$ {preco_venda:.2f}.")
